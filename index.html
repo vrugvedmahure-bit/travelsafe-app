@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>TravelSafe India</title>
+
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="manifest" href="manifest.json">
+</head>
+
+<body>
+
+<h1>🇮🇳 TravelSafe India</h1>
+<p class="subtitle">Tourist Safety & Travel Assistant</p>
+
+<div class="grid">
+
+  <button onclick="call('100')"><span class="material-icons">local_police</span>Police</button>
+  <button onclick="call('108')"><span class="material-icons">medical_services</span>Ambulance</button>
+  <button onclick="call('101')"><span class="material-icons">local_fire_department</span>Fire</button>
+
+  <button onclick="openPoliceNearby()"><span class="material-icons">location_on</span>Police Nearby</button>
+  <button onclick="openHospitals()"><span class="material-icons">local_hospital</span>Hospitals</button>
+
+  <button onclick="getWeather()"><span class="material-icons">cloud</span>Weather</button>
+  <button onclick="getLocationWeather()"><span class="material-icons">my_location</span>Auto Weather</button>
+
+  <select id="countrySelect">
+    <option value="">🌍 Select Country</option>
+    <option>India</option>
+    <option>USA</option>
+    <option>UK</option>
+    <option>Canada</option>
+    <option>Australia</option>
+    <option>Germany</option>
+    <option>France</option>
+    <option>Japan</option>
+  </select>
+
+  <button onclick="showCountryNumbers()"><span class="material-icons">public</span>Emergency Numbers</button>
+  <button onclick="getTouristTips()"><span class="material-icons">lightbulb</span>Travel Tips</button>
+
+</div>
+
+<p id="info"></p>
+<p id="weather"></p>
+<p id="tips"></p>
+
+<script src="script.js"></script>
+</body>
+</html>
