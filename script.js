@@ -1,5 +1,7 @@
 function call(num) {
-  alert("Calling " + num);
+  if (confirm("Open dialer for " + num + "?")) {
+    window.location.href = "tel:" + num;
+  }
 }
 
 function openPoliceNearby() {
