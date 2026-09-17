@@ -1,60 +1,418 @@
+
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>TravelSafe India</title>
-  <meta name="theme-color" content="#2196F3">
-  <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link rel="manifest" href="manifest.json">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>TravelSafe India</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link
+        href="https://fonts.googleapis.com/icon?family=Material+Icons"
+        rel="stylesheet"
+    >
 </head>
 
 <body>
 
-<h1>🇮🇳 TravelSafe India</h1>
-<p class="subtitle">Tourist Safety & Travel Assistant</p>
+<header>
+    <h1>🇮🇳 TravelSafe India</h1>
+    <p class="subtitle">Tourist Safety & Travel Assistant</p>
 
-<div class="grid">
+    <button class="theme-btn" onclick="toggleTheme()">
+        <span class="material-icons">dark_mode</span>
+        Theme
+    </button>
+</header>
 
-  <button onclick="call('112')"><span class="material-icons">local_police</span>Police</button>
-  <button onclick="call('108')"><span class="material-icons">medical_services</span>Ambulance</button>
-  <button onclick="call('101')"><span class="material-icons">local_fire_department</span>Fire</button>
-  <button onclick="call('1363')">
-  <span class="material-icons">travel_explore</span>
-  Tourist Helpline
-</button>
 
-<button onclick="call('1033')">
-  <span class="material-icons">directions_car</span>
-  Highway Helpline
-</button>
+<main>
 
-  <button onclick="openPoliceNearby()"><span class="material-icons">location_on</span>Police Nearby</button>
-  <button onclick="openHospitals()"><span class="material-icons">local_hospital</span>Hospitals</button>
+    <!-- SOS -->
+    <section class="sos-section">
+        <h2>🚨 Emergency Assistance</h2>
 
-  <button onclick="getWeather()"><span class="material-icons">cloud</span>Weather</button>
-  <button onclick="getLocationWeather()"><span class="material-icons">my_location</span>Auto Weather</button>
+        <button class="sos-button" onclick="showSOS()">
+            <span class="material-icons">sos</span>
+            SOS
+        </button>
 
-  <select id="countrySelect">
-    <option value="">🌍 Select Country</option>
-    <option>India</option>
-    <option>USA</option>
-    <option>UK</option>
-    <option>Canada</option>
-    <option>Australia</option>
-    <option>Germany</option>
-    <option>France</option>
-    <option>Japan</option>
-  </select>
+        <p>Quick access to emergency services.</p>
+    </section>
 
-  <button onclick="showCountryNumbers()"><span class="material-icons">public</span>Emergency Numbers</button>
-  <button onclick="getTouristTips()"><span class="material-icons">lightbulb</span>Travel Tips</button>
+
+    <!-- GOOGLE MAPS -->
+    <section class="card">
+
+        <h2>
+            <span class="material-icons">map</span>
+            Find a Place
+        </h2>
+
+        <p>Enter an address, landmark or place and open it directly in Google Maps.</p>
+
+        <div class="search-row">
+
+            <input
+                type="text"
+                id="addressInput"
+                placeholder="Example: Gateway of India, Mumbai"
+                onkeydown="if(event.key === 'Enter') openGoogleMaps()"
+            >
+
+            <button onclick="openGoogleMaps()">
+                <span class="material-icons">directions</span>
+                Open Maps
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- DIRECTIONS -->
+    <section class="card">
+
+        <h2>
+            <span class="material-icons">route</span>
+            Get Directions
+        </h2>
+
+        <input
+            type="text"
+            id="destinationInput"
+            placeholder="Enter destination..."
+        >
+
+        <button class="full-btn" onclick="getDirections()">
+            <span class="material-icons">navigation</span>
+            Get Directions
+        </button>
+
+    </section>
+
+
+    <!-- EMERGENCY SERVICES -->
+    <section class="card">
+
+        <h2>📞 Emergency & Tourist Helplines</h2>
+
+        <div class="grid">
+
+            <button onclick="callNumber('112', 'Police')">
+                <span class="material-icons">local_police</span>
+                Police
+                <small>112</small>
+            </button>
+
+            <button onclick="callNumber('108', 'Ambulance')">
+                <span class="material-icons">medical_services</span>
+                Ambulance
+                <small>108</small>
+            </button>
+
+            <button onclick="callNumber('101', 'Fire Services')">
+                <span class="material-icons">local_fire_department</span>
+                Fire
+                <small>101</small>
+            </button>
+
+            <button onclick="callNumber('1033', 'Highway Helpline')">
+                <span class="material-icons">traffic</span>
+                Highway
+                <small>1033</small>
+            </button>
+
+            <button onclick="callNumber('1363', 'Tourist Helpline')">
+                <span class="material-icons">support_agent</span>
+                Tourist
+                <small>1363</small>
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- NEARBY SERVICES -->
+    <section class="card">
+
+        <h2>📍 Nearby Safety Services</h2>
+
+        <div class="grid">
+
+            <button onclick="openNearby('police')">
+                <span class="material-icons">local_police</span>
+                Police Nearby
+            </button>
+
+            <button onclick="openNearby('hospital')">
+                <span class="material-icons">local_hospital</span>
+                Hospitals
+            </button>
+
+            <button onclick="openNearby('pharmacy')">
+                <span class="material-icons">local_pharmacy</span>
+                Pharmacies
+            </button>
+
+            <button onclick="openNearby('atm')">
+                <span class="material-icons">account_balance</span>
+                ATMs
+            </button>
+
+            <button onclick="openNearby('railway station')">
+                <span class="material-icons">train</span>
+                Railway Stations
+            </button>
+
+            <button onclick="openNearby('tourist information centre')">
+                <span class="material-icons">info</span>
+                Tourist Centres
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- MY LOCATION -->
+    <section class="card">
+
+        <h2>
+            <span class="material-icons">location_on</span>
+            My Location
+        </h2>
+
+        <button class="full-btn" onclick="getMyLocation()">
+            <span class="material-icons">my_location</span>
+            Find My Location
+        </button>
+
+        <div id="locationResult" class="result-box">
+            Your location will appear here.
+        </div>
+
+        <button class="full-btn" onclick="shareLocation()">
+            <span class="material-icons">share</span>
+            Share My Location
+        </button>
+
+    </section>
+
+
+    <!-- SAFETY SCANNER -->
+    <section class="card">
+
+        <h2>
+            <span class="material-icons">radar</span>
+            Nearby Safety Scanner
+        </h2>
+
+        <p>
+            Quickly search for important services around your current location.
+        </p>
+
+        <button class="full-btn" onclick="safetyScanner()">
+            <span class="material-icons">search</span>
+            Scan Nearby
+        </button>
+
+    </section>
+
+
+    <!-- WEATHER -->
+    <section class="card">
+
+        <h2>
+            <span class="material-icons">cloud</span>
+            Weather
+        </h2>
+
+        <div class="search-row">
+
+            <input
+                type="text"
+                id="cityInput"
+                placeholder="Enter city..."
+                onkeydown="if(event.key === 'Enter') getWeather()"
+            >
+
+            <button onclick="getWeather()">
+                <span class="material-icons">search</span>
+                Check
+            </button>
+
+        </div>
+
+        <button class="full-btn" onclick="getLocationWeather()">
+            <span class="material-icons">my_location</span>
+            Weather at My Location
+        </button>
+
+        <div id="weatherResult" class="result-box"></div>
+
+    </section>
+
+
+    <!-- BATTERY -->
+    <section class="card">
+
+        <h2>
+            <span class="material-icons">battery_full</span>
+            Phone Battery
+        </h2>
+
+        <div id="batteryResult" class="result-box">
+            Checking battery...
+        </div>
+
+    </section>
+
+
+    <!-- HELP -->
+    <section class="help-card">
+
+        <h2>🚨 I'm Lost / I Need Help</h2>
+
+        <p>
+            Quickly access your location, maps and emergency services.
+        </p>
+
+        <div class="grid">
+
+            <button onclick="getMyLocation()">
+                <span class="material-icons">location_on</span>
+                My Location
+            </button>
+
+            <button onclick="openGoogleMaps()">
+                <span class="material-icons">map</span>
+                Open Maps
+            </button>
+
+            <button onclick="callNumber('112', 'Police')">
+                <span class="material-icons">local_police</span>
+                Police 112
+            </button>
+
+            <button onclick="callNumber('108', 'Ambulance')">
+                <span class="material-icons">medical_services</span>
+                Ambulance 108
+            </button>
+
+            <button onclick="callNumber('1033', 'Highway Helpline')">
+                <span class="material-icons">traffic</span>
+                Highway 1033
+            </button>
+
+            <button onclick="callNumber('1363', 'Tourist Helpline')">
+                <span class="material-icons">support_agent</span>
+                Tourist 1363
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- LANGUAGE -->
+    <section class="card">
+
+        <h2>
+            <span class="material-icons">language</span>
+            Language
+        </h2>
+
+        <select id="languageSelect" onchange="changeLanguage()">
+
+            <option value="English">English</option>
+            <option value="Hindi">हिन्दी</option>
+            <option value="Marathi">मराठी</option>
+            <option value="Bengali">বাংলা</option>
+            <option value="Tamil">தமிழ்</option>
+            <option value="Telugu">తెలుగు</option>
+
+        </select>
+
+        <p id="languageMessage">
+            Language selected: English
+        </p>
+
+    </section>
+
+
+    <!-- TOURIST TIPS -->
+    <section class="card">
+
+        <h2>
+            <span class="material-icons">travel_explore</span>
+            Tourist Safety Tips
+        </h2>
+
+        <div class="tip-buttons">
+
+            <button onclick="showTip('railway')">🚆 Railway</button>
+            <button onclick="showTip('hotel')">🏨 Hotel</button>
+            <button onclick="showTip('mountain')">🏔️ Mountain</button>
+            <button onclick="showTip('beach')">🏖️ Beach</button>
+            <button onclick="showTip('taxi')">🚕 Taxi</button>
+            <button onclick="showTip('night')">🌙 Night Travel</button>
+            <button onclick="showTip('money')">💰 Money</button>
+            <button onclick="showTip('phone')">📱 Phone</button>
+
+        </div>
+
+        <div id="tipResult" class="result-box"></div>
+
+    </section>
+
+</main>
+
+
+<!-- SOS MODAL -->
+
+<div id="sosModal" class="modal">
+
+    <div class="modal-box">
+
+        <h2>🚨 Emergency Assistance</h2>
+
+        <p>Choose the service you need:</p>
+
+        <button onclick="callNumber('112', 'Police')">
+            🚓 Police — 112
+        </button>
+
+        <button onclick="callNumber('108', 'Ambulance')">
+            🚑 Ambulance — 108
+        </button>
+
+        <button onclick="callNumber('101', 'Fire Services')">
+            🔥 Fire — 101
+        </button>
+
+        <button onclick="callNumber('1033', 'Highway Helpline')">
+            🛣️ Highway — 1033
+        </button>
+
+        <button onclick="closeSOS()" class="close-btn">
+            Cancel
+        </button>
+
+    </div>
 
 </div>
 
-<p id="info"></p>
-<p id="weather"></p>
-<p id="tips"></p>
+
+<footer>
+    <p>🇮🇳 TravelSafe India • Stay Safe • Travel Smart</p>
+</footer>
+
 
 <script src="script.js"></script>
+
 </body>
 </html>
