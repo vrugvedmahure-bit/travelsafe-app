@@ -4,7 +4,6 @@
 
 html {
     scroll-behavior: smooth;
-
 }
 
 body {
@@ -127,6 +126,8 @@ h1 {
     gap: 6px;
 
     transition: 0.2s;
+    z-index: 10000;
+    pointer-events: auto;
 
 }
 
@@ -356,6 +357,10 @@ button:active {
 }
 
 .sos-button {
+    position: relative;
+    z-index: 2;
+    pointer-events: auto;
+    cursor: pointer;
 
     width: 130px;
 
@@ -562,4 +567,456 @@ body.dark select {
 
     color: #111;
 
+}
+
+/* SOS MODAL */
+.sos-modal{
+    display:none;
+    position:fixed;
+    inset:0;
+    z-index:99999;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+    background:rgba(0,0,0,.68);
+    width:100%;
+    height:100%;
+}
+.sos-modal .sos-content{
+    position:relative;
+    width:min(420px,100%);
+    padding:26px;
+    border-radius:20px;
+    background:#1f2937;
+    color:#fff;
+    box-shadow:0 20px 60px rgba(0,0,0,.45);
+}
+.sos-modal.show{display:flex}
+.sos-modal h2{margin:0 0 10px}
+.sos-modal p{margin:0 0 16px}
+.sos-modal button{width:100%;margin:7px 0;padding:13px;border:0;border-radius:12px;cursor:pointer;font-weight:700}
+.sos-modal .close-btn{background:#6b7280;color:#fff}
+@media(max-width:600px){
+    .sos-modal{padding:20px}
+    .sos-modal button{padding:12px}
+}
+
+body.modal-open{overflow:hidden;}
+.sos-close{position:absolute;right:12px;top:10px;width:auto!important;margin:0!important;background:transparent!important;color:#fff;font-size:28px;padding:4px 10px!important;}
+
+
+/* HARDENED INTERACTION FIXES */
+.header-top { position: relative; z-index: 10001; }
+.theme-btn { z-index: 10002 !important; position: relative; pointer-events: auto !important; touch-action: manipulation; }
+.sos-section { position: relative; z-index: 10; }
+.sos-button { z-index: 11 !important; pointer-events: auto !important; touch-action: manipulation; }
+.sos-modal { z-index: 999999 !important; pointer-events: none; }
+.sos-modal.show { display: flex !important; pointer-events: auto; }
+.sos-content { z-index: 1000000; pointer-events: auto; }
+.sos-close { z-index: 1000001; pointer-events: auto !important; }
+
+
+/* FINAL HEADER/THEME FIX */
+header {
+    position: relative;
+    width: 100%;
+}
+.header-top {
+    position: relative;
+    min-height: 105px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+}
+.header-top > div:first-child {
+    text-align: center;
+    width: 100%;
+}
+.theme-btn {
+    position: absolute !important;
+    right: 20px !important;
+    left: auto !important;
+    top: 20px !important;
+    margin: 0 !important;
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    min-width: 96px;
+    height: 44px;
+    z-index: 100000 !important;
+    pointer-events: auto !important;
+    cursor: pointer !important;
+    touch-action: manipulation;
+}
+.theme-label { display: inline; }
+@media (max-width: 650px) {
+    .header-top { min-height: 110px; }
+    .theme-btn {
+        right: 12px !important;
+        top: 12px !important;
+        min-width: 88px;
+        height: 40px;
+        padding: 8px 12px !important;
+    }
+    .theme-label { display: inline; }
+}
+
+/* =========================================================
+   TRAVELSAFE INDIA — VISUAL POLISH PACK
+   Adds richer color, modern glass cards and attractive buttons
+   without changing the app's functionality.
+   ========================================================= */
+
+:root {
+    --ts-blue: #2563eb;
+    --ts-indigo: #4f46e5;
+    --ts-cyan: #06b6d4;
+    --ts-teal: #0d9488;
+    --ts-green: #16a34a;
+    --ts-orange: #f97316;
+    --ts-pink: #ec4899;
+    --ts-purple: #8b5cf6;
+    --ts-red: #ef4444;
+    --ts-shadow: 0 14px 38px rgba(15, 23, 42, .20);
+}
+
+body {
+    background:
+        radial-gradient(circle at 10% 10%, rgba(99,102,241,.38), transparent 30%),
+        radial-gradient(circle at 90% 15%, rgba(6,182,212,.32), transparent 28%),
+        radial-gradient(circle at 75% 85%, rgba(236,72,153,.22), transparent 30%),
+        linear-gradient(135deg, #172554 0%, #0f766e 48%, #164e63 100%);
+    background-size: 140% 140%;
+}
+
+body.dark {
+    background:
+        radial-gradient(circle at 10% 10%, rgba(79,70,229,.34), transparent 30%),
+        radial-gradient(circle at 90% 15%, rgba(8,145,178,.28), transparent 28%),
+        radial-gradient(circle at 80% 90%, rgba(126,34,206,.24), transparent 32%),
+        linear-gradient(135deg, #070b1a 0%, #111827 52%, #062b31 100%);
+}
+
+header {
+    padding-bottom: 22px;
+}
+
+header h1 {
+    text-shadow: 0 5px 22px rgba(0,0,0,.28);
+    letter-spacing: .3px;
+}
+
+.subtitle {
+    text-shadow: 0 2px 10px rgba(0,0,0,.2);
+}
+
+/* Theme button */
+.theme-btn {
+    background: linear-gradient(135deg, #ffffff, #e0f2fe) !important;
+    color: #172554 !important;
+    border: 1px solid rgba(255,255,255,.7) !important;
+    box-shadow: 0 8px 22px rgba(0,0,0,.20) !important;
+}
+
+.theme-btn:hover {
+    background: linear-gradient(135deg, #dbeafe, #cffafe) !important;
+    box-shadow: 0 12px 28px rgba(6,182,212,.28) !important;
+    transform: translateY(-2px) scale(1.03) !important;
+}
+
+body.dark .theme-btn {
+    background: linear-gradient(135deg, #312e81, #0e7490) !important;
+    color: #fff !important;
+    border-color: rgba(255,255,255,.18) !important;
+}
+
+/* Modern glass cards */
+.card,
+.help-card,
+.sos-section {
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(145deg, rgba(255,255,255,.22), rgba(255,255,255,.09)) !important;
+    border: 1px solid rgba(255,255,255,.27) !important;
+    box-shadow: var(--ts-shadow), inset 0 1px 0 rgba(255,255,255,.18) !important;
+}
+
+.card::before,
+.help-card::before,
+.sos-section::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, var(--ts-blue), var(--ts-cyan), var(--ts-purple), var(--ts-pink));
+    opacity: .9;
+}
+
+.card:hover,
+.help-card:hover,
+.sos-section:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 18px 45px rgba(15,23,42,.26), inset 0 1px 0 rgba(255,255,255,.2) !important;
+}
+
+.card h2,
+.help-card h2,
+.sos-section h2 {
+    font-weight: 800;
+    letter-spacing: .2px;
+    text-shadow: 0 2px 8px rgba(0,0,0,.14);
+}
+
+.card h2 .material-icons,
+.help-card h2 .material-icons,
+.sos-section h2 .material-icons {
+    color: #67e8f9;
+    filter: drop-shadow(0 3px 7px rgba(6,182,212,.35));
+}
+
+/* Inputs */
+input,
+select {
+    border: 2px solid transparent !important;
+    box-shadow: 0 6px 18px rgba(15,23,42,.12) !important;
+    transition: border-color .2s, box-shadow .2s, transform .2s !important;
+}
+
+input:focus,
+select:focus {
+    border-color: #67e8f9 !important;
+    box-shadow: 0 0 0 4px rgba(103,232,249,.16), 0 8px 22px rgba(15,23,42,.16) !important;
+    transform: translateY(-1px);
+}
+
+/* Attractive button system */
+button {
+    border: 1px solid rgba(255,255,255,.22) !important;
+    box-shadow: 0 7px 18px rgba(15,23,42,.16);
+    background: linear-gradient(135deg, #ffffff, #e0f2fe);
+    color: #172554;
+    position: relative;
+    overflow: hidden;
+}
+
+button::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(110deg, transparent 30%, rgba(255,255,255,.38) 50%, transparent 70%);
+    transform: translateX(-120%);
+    transition: transform .5s ease;
+    pointer-events: none;
+}
+
+button:hover::after {
+    transform: translateX(120%);
+}
+
+button:hover {
+    box-shadow: 0 11px 26px rgba(15,23,42,.24);
+}
+
+/* Search / action buttons */
+.search-row button,
+.full-btn {
+    background: linear-gradient(135deg, #2563eb, #06b6d4) !important;
+    color: #fff !important;
+    box-shadow: 0 9px 22px rgba(37,99,235,.30) !important;
+}
+
+.search-row button:hover,
+.full-btn:hover {
+    background: linear-gradient(135deg, #1d4ed8, #0891b2) !important;
+}
+
+/* Emergency and nearby button grids */
+.button-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 14px;
+    margin-top: 14px;
+}
+
+.button-grid button {
+    min-height: 82px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    font-size: 15px;
+    border-radius: 17px !important;
+}
+
+.button-grid button:nth-child(1) {
+    background: linear-gradient(135deg, #fee2e2, #fecaca) !important;
+    color: #991b1b !important;
+}
+
+.button-grid button:nth-child(2) {
+    background: linear-gradient(135deg, #ffedd5, #fed7aa) !important;
+    color: #9a3412 !important;
+}
+
+.button-grid button:nth-child(3) {
+    background: linear-gradient(135deg, #dbeafe, #bfdbfe) !important;
+    color: #1e40af !important;
+}
+
+.button-grid button:nth-child(4) {
+    background: linear-gradient(135deg, #ede9fe, #ddd6fe) !important;
+    color: #5b21b6 !important;
+}
+
+.button-grid button:nth-child(5) {
+    background: linear-gradient(135deg, #ccfbf1, #99f6e4) !important;
+    color: #115e59 !important;
+}
+
+.button-grid button:nth-child(6) {
+    background: linear-gradient(135deg, #dcfce7, #bbf7d0) !important;
+    color: #166534 !important;
+}
+
+.button-grid button:hover {
+    transform: translateY(-4px) scale(1.015);
+}
+
+/* Quick services */
+.service-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 14px;
+}
+
+.service-card {
+    min-height: 135px;
+    border-radius: 18px !important;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    box-shadow: 0 10px 25px rgba(15,23,42,.15) !important;
+}
+
+.service-card .material-icons {
+    font-size: 34px;
+}
+
+.service-card:nth-child(1) {
+    background: linear-gradient(145deg, #dbeafe, #bfdbfe) !important;
+    color: #1e40af !important;
+}
+
+.service-card:nth-child(2) {
+    background: linear-gradient(145deg, #ffe4e6, #fecdd3) !important;
+    color: #9f1239 !important;
+}
+
+.service-card:nth-child(3) {
+    background: linear-gradient(145deg, #fef3c7, #fde68a) !important;
+    color: #92400e !important;
+}
+
+.service-card:nth-child(4) {
+    background: linear-gradient(145deg, #dcfce7, #bbf7d0) !important;
+    color: #166534 !important;
+}
+
+.service-card:hover {
+    transform: translateY(-5px) scale(1.02);
+}
+
+.service-card small {
+    opacity: .75;
+    font-weight: 700;
+}
+
+/* SOS gets a stronger visual hierarchy */
+.sos-section {
+    background: linear-gradient(145deg, rgba(239,68,68,.28), rgba(249,115,22,.20)) !important;
+}
+
+.sos-button {
+    background: radial-gradient(circle at 35% 28%, #ff6b6b 0%, #ef1d1d 42%, #b91c1c 100%) !important;
+    border: 7px solid rgba(255,255,255,.18) !important;
+    box-shadow: 0 0 0 5px rgba(239,68,68,.16), 0 14px 35px rgba(127,29,29,.42), inset 0 4px 12px rgba(255,255,255,.18) !important;
+}
+
+.sos-button:hover {
+    background: radial-gradient(circle at 35% 28%, #ff8585 0%, #ef1d1d 42%, #991b1b 100%) !important;
+    box-shadow: 0 0 0 8px rgba(239,68,68,.18), 0 18px 42px rgba(127,29,29,.5) !important;
+}
+
+/* Result boxes */
+.result-box {
+    background: linear-gradient(135deg, rgba(15,23,42,.28), rgba(6,182,212,.12)) !important;
+    border: 1px solid rgba(255,255,255,.13);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.08);
+}
+
+/* Tips */
+.tip-buttons button {
+    border-radius: 15px !important;
+    background: linear-gradient(135deg, #f5f3ff, #e0e7ff) !important;
+    color: #3730a3 !important;
+}
+
+.tip-buttons button:hover {
+    background: linear-gradient(135deg, #ddd6fe, #bfdbfe) !important;
+}
+
+/* Footer */
+footer {
+    background: linear-gradient(90deg, rgba(15,23,42,.35), rgba(6,78,59,.30), rgba(49,46,129,.35));
+    border-top: 1px solid rgba(255,255,255,.12);
+}
+
+/* Dark mode button/card colors */
+body.dark .card,
+body.dark .help-card,
+body.dark .sos-section {
+    background: linear-gradient(145deg, rgba(30,41,59,.88), rgba(15,23,42,.76)) !important;
+    border-color: rgba(148,163,184,.20) !important;
+}
+
+body.dark .button-grid button:nth-child(1) { background: linear-gradient(135deg,#4c1d1d,#7f1d1d) !important; color:#fecaca !important; }
+body.dark .button-grid button:nth-child(2) { background: linear-gradient(135deg,#4a2510,#7c2d12) !important; color:#fed7aa !important; }
+body.dark .button-grid button:nth-child(3) { background: linear-gradient(135deg,#172554,#1e3a8a) !important; color:#bfdbfe !important; }
+body.dark .button-grid button:nth-child(4) { background: linear-gradient(135deg,#2e1065,#4c1d95) !important; color:#ddd6fe !important; }
+body.dark .button-grid button:nth-child(5) { background: linear-gradient(135deg,#042f2e,#115e59) !important; color:#99f6e4 !important; }
+body.dark .button-grid button:nth-child(6) { background: linear-gradient(135deg,#052e16,#166534) !important; color:#bbf7d0 !important; }
+body.dark .service-card:nth-child(1) { background:linear-gradient(145deg,#172554,#1e3a8a) !important; color:#bfdbfe !important; }
+body.dark .service-card:nth-child(2) { background:linear-gradient(145deg,#4c0519,#881337) !important; color:#fecdd3 !important; }
+body.dark .service-card:nth-child(3) { background:linear-gradient(145deg,#451a03,#78350f) !important; color:#fde68a !important; }
+body.dark .service-card:nth-child(4) { background:linear-gradient(145deg,#052e16,#166534) !important; color:#bbf7d0 !important; }
+body.dark .tip-buttons button { background:linear-gradient(135deg,#1e1b4b,#312e81) !important; color:#ddd6fe !important; }
+
+@media (max-width: 700px) {
+    .service-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .button-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 430px) {
+    .service-grid,
+    .button-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+    }
+    .button-grid button {
+        min-height: 76px;
+        padding: 10px 8px;
+    }
+    .service-card {
+        min-height: 118px;
+    }
 }
